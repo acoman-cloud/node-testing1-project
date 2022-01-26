@@ -105,22 +105,42 @@ describe('[Exercise 5] Seasons', () => {
 })
 
 describe('[Exercise 6] Car', () => {
-  // let focus
-  // beforeEach(() => {
-  //   focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
-  // })
-  // test('[15] driving the car returns the updated odometer', () => {
-  //   expect(focus.drive).toBeDefined()
-  //   expect(focus.drive).toBe(utils.Car.prototype.drive)
+  let focus
+  beforeEach(() => {
+    focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
+  })
+  test('[15] driving the car returns the updated odometer', () => {
+    expect(focus.drive).toBeDefined()
+    expect(focus.drive).toBe(utils.Car.prototype.drive)
 
-
-  // })
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+    expect(focus.drive(100)).toBe(100)
+    expect(focus.drive(100)).toBe(200) // returns 200
+    expect(focus.drive(100)).toBe(300) // returns 300
+    expect(focus.drive(200)).toBe(500) // returns 500
+    expect(focus.drive(200)).toBe(600) // returns 600 (ran out of gas after 100 miles)
+    expect(focus.drive(1)).toBe(600)
+  })
+  test('[16] driving the car uses gas', () => {
+    focus.drive(60)
+    expect(focus.gas).toBe(18)
+  })
+  test('[17] refueling allows to keep driving', () => {
+    focus.drive(600)
+    expect(focus.gas).toBe(0)
+    expect(focus.refuel(5)).toBe(150)
+  })
+  test('[18] adding fuel to a full tank has no effect', () => {
+    expect(focus.refuel(20)).toBe(600)
+    expect(focus.refuel(5)).toBe(600)
+  })
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
-  // test('[19] resolves true if passed an even number', () => {})
+  // test('[19] resolves true if passed an even number', async () => {
+  //   const input = 2
+  //   const expected = true
+  //   const actual = await utils.isEvenNumberAsync(input)
+  //   expect(actual).toEqual(expected)
+  // })
   // test('[20] resolves false if passed an odd number', () => {})
 })
