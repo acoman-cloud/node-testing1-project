@@ -7,11 +7,13 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
+  const newObj = Object.assign({}, obj)
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
       obj[key] = obj[key].trim() 
     }
   }
+  //console.log(obj)
   return obj
 }
 
@@ -24,7 +26,15 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
+  const newObj = Object.assign(obj)
+  console.log(obj, newObj)
+  for (var key in newObj) {
+    if (newObj.hasOwnProperty(key)) {
+      newObj[key] = newObj[key].trim() 
+    }
+  }
+  console.log(obj, newObj)
+  return newObj 
 }
 
 /**
