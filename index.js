@@ -80,6 +80,7 @@ class Seasons {
   constructor() {
     // ✨ initialize whatever properties are needed
     this.seasons = ['summer', 'fall', 'winter', 'spring']
+    this.count = 0
   }
 
   /**
@@ -95,7 +96,13 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
-    // ✨ implement
+    let summer = this.seasons[this.count]
+    if (this.count === 3) {
+      this.count = 0
+    } else {
+      this.count++
+    }
+    return summer
   }
 }
 
@@ -110,6 +117,7 @@ class Car {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    
   }
 
   /**

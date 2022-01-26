@@ -32,7 +32,7 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 
 describe('[Exercise 3] findLargestInteger', () => {
   test('[5] returns the largest number in an array of objects { integer: 2 }', () => {
-    const input = [{integer: 1}, {integer: 2}, {integer: 3}, {integer: 300}]
+    const input = [{ integer: 1 }, { integer: 2 }, { integer: 3 }, { integer: 300 }]
     const actual = utils.findLargestInteger(input)
     expect(actual).toBe(300)
   })
@@ -46,7 +46,7 @@ describe('[Exercise 4] Counter', () => {
   test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
     expect(counter.countDown).toBeDefined()
     expect(counter.countDown).toBe(utils.Counter.prototype.countDown)
-    
+
     expect(counter.number).toBe(3)
     const number = new utils.Counter(2).countDown()
     expect(number).toBe(2)
@@ -66,18 +66,42 @@ describe('[Exercise 4] Counter', () => {
 })
 
 describe('[Exercise 5] Seasons', () => {
-  // let seasons
-  // beforeEach(() => {
-  //   seasons = new utils.Seasons() // each test must start with fresh seasons
-  // // })
-  // test('[9] the FIRST call of seasons.next returns "summer"', () => {
+  let seasons
+  beforeEach(() => {
+    seasons = new utils.Seasons() // each test must start with fresh seasons
+  })
+  test('[9] the FIRST call of seasons.next returns "summer"', () => {
+    expect(seasons.next).toBeDefined()
+    expect(seasons.next).toBe(utils.Seasons.prototype.next)
 
-  // })
-  // test('[10] the SECOND call of seasons.next returns "fall"', () => {})
-  // test('[11] the THIRD call of seasons.next returns "winter"', () => {})
-  // test('[12] the FOURTH call of seasons.next returns "spring"', () => {})
-  // test('[13] the FIFTH call of seasons.next returns again "summer"', () => {})
-  // test('[14] the 40th call of seasons.next returns "spring"', () => {})
+    expect(seasons.next()).toBe('summer')
+  })
+  test('[10] the SECOND call of seasons.next returns "fall"', () => {
+    seasons.next()
+    expect(seasons.next()).toBe('fall')
+  })
+  test('[11] the THIRD call of seasons.next returns "winter"', () => {
+    seasons.next()
+    seasons.next()
+    expect(seasons.next()).toBe('winter')
+  })
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {
+    seasons.next()
+    seasons.next()
+    seasons.next()
+    expect(seasons.next()).toBe('spring')
+  })
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+    seasons.next()
+    seasons.next()
+    seasons.next()
+    seasons.next()
+    expect(seasons.next()).toBe('summer')
+  })
+  test('[14] the 40th call of seasons.next returns "spring"', () => {
+    for (let i = 0; i < 39; i++) {seasons.next()}
+    expect(seasons.next()).toBe('spring')
+  })
 })
 
 describe('[Exercise 6] Car', () => {
@@ -85,7 +109,12 @@ describe('[Exercise 6] Car', () => {
   // beforeEach(() => {
   //   focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
   // })
-  // test('[15] driving the car returns the updated odometer', () => {})
+  // test('[15] driving the car returns the updated odometer', () => {
+  //   expect(focus.drive).toBeDefined()
+  //   expect(focus.drive).toBe(utils.Car.prototype.drive)
+
+
+  // })
   // test('[16] driving the car uses gas', () => {})
   // test('[17] refueling allows to keep driving', () => {})
   // test('[18] adding fuel to a full tank has no effect', () => {})
