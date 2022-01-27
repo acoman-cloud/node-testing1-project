@@ -118,24 +118,24 @@ describe('[Exercise 6] Car', () => {
     expect(focus.drive(100)).toBe(300) // returns 300
     expect(focus.drive(200)).toBe(500) // returns 500
     expect(focus.drive(200)).toBe(600) // returns 600 (ran out of tank after 100 miles)
-    expect(focus.tank).toBe(0)
+    expect(focus.gas).toBe(0)
     expect(focus.drive(1)).toBe(600)
   })
   test('[16] driving the car uses gas', () => {
-    expect(focus.tank).toBe(20)
+    expect(focus.gas).toBe(20)
     focus.drive(600)
     expect(focus.drive(1)).toBe(600)
-    expect(focus.tank).toBe(0)
+    expect(focus.gas).toBe(0)
     expect(focus.odometer).toBe(600)
   })
   test('[17] refueling allows to keep driving', () => {
     focus.drive(600)
-    expect(focus.tank).toBe(0)
+    expect(focus.gas).toBe(0)
     expect(focus.refuel(5)).toBe(150)
     focus.drive(150)
     focus.refuel(20)
     focus.drive(600)
-    expect(focus.tank).toBe(0)
+    expect(focus.gas).toBe(0)
     expect(focus.odometer).toBe(1350)
   })
   test('[18] adding fuel to a full tank has no effect', () => {
