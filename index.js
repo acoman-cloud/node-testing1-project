@@ -174,7 +174,7 @@ class Car {
   refuel(gallons) {
     if (this.gas === this.tank) {
       return this.gas * this.mpg
-    } else if (this.gas + gallons >= this.tank) {
+    } else if ((this.gas + gallons) >= this.tank) {
       this.gas = this.tank
       return this.gas * this.mpg
     } else {
