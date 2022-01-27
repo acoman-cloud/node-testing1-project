@@ -138,22 +138,12 @@ class Car {
     // ✨ implement
     const driveableMiles = this.gas * this.mpg
     if (distance <= driveableMiles) {
-
       this.gas -= (distance / this.mpg)
       return this.odometer += distance
-
-    } else if (driveableMiles === 0) {
-
-      return this.odometer
-
-    } else if (driveableMiles <= distance) {
-
-      //const ride = distance - driveableMiles
+    }else{
       this.gas = 0
       return this.odometer += driveableMiles
-
     }
-    return this.odometer
   }
 
   /**
