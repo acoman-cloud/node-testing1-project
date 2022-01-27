@@ -136,15 +136,27 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
-    const canDrive = this.gas * this.mpg
-    if (canDrive > distance) {
-      this.gas -= distance / this.mpg
-      return this.odometer += distance
-    } else if (canDrive === 0) {
-      return this.odometer
-    } else {
+    const driveableMiles = this.gas * this.mpg
+    if (driveableMiles === distance) {
+
       this.gas = 0
-      return this.odometer += distance - canDrive
+      return this.odometer += distance
+
+    } else if (driveableMiles > distance) {
+
+      this.gas -= (distance / this.mpg)
+      return this.odometer += distance
+
+    } else if (driveableMiles === 0) {
+
+      return this.odometer
+
+    } else {
+
+      const ride = distance - driveableMiles
+      this.gas = 0
+      return this.odometer += ride
+
     }
   }
 
@@ -161,13 +173,13 @@ class Car {
    */
   refuel(gallons) {
     if (this.gas === this.tank) {
-      return this.gas*this.mpg
+      return this.gas * this.mpg
     } else if (this.gas + gallons >= this.tank) {
       this.gas = this.tank
-      return this.gas*this.mpg
+      return this.gas * this.mpg
     } else {
       this.gas += gallons
-      return this.gas*this.mpg
+      return this.gas * this.mpg
     }
   }
 }
@@ -187,7 +199,7 @@ class Car {
  */
 async function isEvenNumberAsync(number) {
   // ✨ implement
-  return number%2 ? false : true
+  return number % 2 ? false : true
 }
 
 module.exports = {
