@@ -148,9 +148,9 @@ class Car {
 
     } else if (driveableMiles <= distance) {
 
-      const ride = distance - driveableMiles
+      //const ride = distance - driveableMiles
       this.gas = 0
-      return this.odometer += ride
+      return this.odometer += driveableMiles
 
     }
     return this.odometer
