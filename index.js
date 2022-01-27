@@ -168,8 +168,7 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    const emptySpace = this.tank - this.gas
-    if (gallons <= emptySpace) {
+    if (gallons <= (this.tank - this.gas)) {
       this.gas += gallons
     } else {
       this.gas = this.tank
