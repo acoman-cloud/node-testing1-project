@@ -140,6 +140,7 @@ describe('[Exercise 6] Car', () => {
     expect(focus.refuel(5)).toBe(600)
     const truck = new utils.Car('truck', 40, 30)
     expect(truck.refuel(40)).toBe(1200)
+    expect(truck.refuel(18800)).toBe(1200)
   })
 })
 
