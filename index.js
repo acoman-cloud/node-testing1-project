@@ -157,14 +157,11 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    if (gallons >= this.tank) {
-      this.gas = this.tank
-    } else {
-      this.gas += gallons
-    }
+    gallons >= this.tank ? this.gas=this.tank : this.gas +=gallons
     return this.gas * this.mpg
   }
 }
+
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
  * @param {number} number - the number to test for evenness
