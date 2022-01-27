@@ -137,12 +137,14 @@ class Car {
   drive(distance) {
     // ✨ implement
     const driveableMiles = this.gas * this.mpg
-    if (distance <= driveableMiles) {
-      this.gas -= (distance / this.mpg)
-      return this.odometer += distance
+    if (distance > driveableMiles) {
+      this.odometer += driveableMiles
+      this.gas -= driveableMiles / this.mpg
+    } else {
+      this.odometer += distance
+      this.tank -= distance / this.mpg
     }
-    this.gas = 0
-    return this.odometer += driveableMiles
+    return this.odometer
   }
 
   /**
@@ -157,11 +159,34 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    gallons >= this.tank ? this.gas=this.tank : this.gas +=gallons
+    gallons >= this.tank ? this.gas = this.tank : this.gas += gallons
     return this.gas * this.mpg
   }
 }
+class Car {
+  constructor(name, tankSize, mpg) {
+    this.name = name
+    this.tankSize = tankSize
+    this.mpg = mpg
+    this.odometer = 0 // car initilizes with zero miles
+    this.tank = this.tankSize // car initiazes full of gas
+  }
 
+  drive(distance) {
+    const milesLeftInTank = this.tank * this.mpg
+    const actualDistanceDriven = distance > milesLeftInTank
+      ? milesLeftInTank
+      : distance
+    this.odometer += actualDistanceDriven
+    this.tank -= actualDistanceDriven / this.mpg
+    return this.odometer
+  }
+  refuel(gallons) {
+    const actualGallonsPoured = gallons >= this.tank ? this.gas = this.tank : this.gas += gallons
+    // this.tank += actualGallonsPoured
+    return this.tank * this.mpg
+  }
+}
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
  * @param {number} number - the number to test for evenness
